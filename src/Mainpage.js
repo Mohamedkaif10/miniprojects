@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-
+import classes from "./Mainpage.module.css"
 const Mainpage = () => {
   const [tables, setTables] = useState([
     {
