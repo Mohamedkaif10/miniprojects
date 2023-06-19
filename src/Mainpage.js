@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from "react";
 import classes from "./Mainpage.module.css"
 const Mainpage = () => {
-  const [tables, setTables] = useState([
-    {
-      id: Date.now(),
-      rows: [{ length: "", breadth: "", area: 0, dividedArea: 0, rate: "", price: 0 }]
-    }
-  ]);
+    const Intialvalues = () => ({
+        id: Math.random().toString(),
+        rows: [{ length: "", breadth: "", area: 0, dividedArea: 0, rate: "", price: 0 }]
+      });
+  const [tables, setTables] = useState([Intialvalues()]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const addRow = (tableId) => {
@@ -14,18 +13,11 @@ const Mainpage = () => {
       prevTables.map((table) => {
         if (table.id === tableId) {
           const newRow = {
-            length: "",
-            breadth: "",
-            area: 0,
-            dividedArea: 0,
-            rate: "",
-            price: 0
           };
           return {
-            ...table,
-            rows: [...table.rows, newRow]
+            ...table,rows: [...table.rows, newRow]
           };
-        }
+         }
         return table;
       })
     );
@@ -44,6 +36,9 @@ const Mainpage = () => {
       })
     );
   };
+const Calculatedarea=(length,breadth)=>{
+    return(parseFloat(length)*parseFloat(breadth))
+}
 
   const updateCellValue = (tableId, rowIndex, colIndex, value) => {
     setTables((prevTables) =>
@@ -71,7 +66,8 @@ const Mainpage = () => {
       })
     );
   };
-
+  
+ 
   const updateTotalPrice = () => {
     let totalPrice = 0;
     tables.forEach((table) => {
@@ -136,7 +132,7 @@ const Mainpage = () => {
         </div>
       ))}
 
-      <div>
+      <div className={classes.TP}>
         <h3>Total Price: {totalPrice}</h3>
         <button onClick={updateTotalPrice}>Calculate Total Price</button>
       </div>

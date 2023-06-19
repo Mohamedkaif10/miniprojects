@@ -10,5 +10,9 @@ th{
 }
 td{
     border:1px solid black;
-  
+  }
+.TP{
+    position: inherit;
+    border-style: dashed;
+    width:5cm
 }
