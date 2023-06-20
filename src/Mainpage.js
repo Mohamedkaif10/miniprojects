@@ -7,25 +7,23 @@ const Mainpage = () => {
       });
   const [tables, setTables] = useState([Intialvalues()]);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  const addRow = (tableId) => {
-    setTables((prevTables) =>
-      prevTables.map((table) => {
-        if (table.id === tableId) {
-          const newRow = {
-          };
-          return {
-            ...table,rows: [...table.rows, newRow]
-          };
-         }
-        return table;
-      })
-    );
-  };
-
+      const addRow = (tableId) => {
+            const updatedTables = tables.map((table) => {
+             if (table.id === tableId) {
+            const newRow = {};
+               return {
+                   ...table,
+                   rows: [...table.rows, newRow]
+                      };
+                }
+               return table;
+              });
+  
+               setTables(updatedTables);
+             };
+  
   const deleteRow = (tableId, rowIndex) => {
-    setTables((prevTables) =>
-      prevTables.map((table) => {
+    const updatedTablesdeleted=tables.map((table) => {
         if (table.id === tableId) {
           return {
             ...table,
@@ -34,15 +32,11 @@ const Mainpage = () => {
         }
         return table;
       })
-    );
+    setTables(updatedTablesdeleted) 
+     
   };
-const Calculatedarea=(length,breadth)=>{
-    return(parseFloat(length)*parseFloat(breadth))
-}
-
-  const updateCellValue = (tableId, rowIndex, colIndex, value) => {
-    setTables((prevTables) =>
-      prevTables.map((table) => {
+const updateCellValue = (tableId, rowIndex, colIndex, value) => {
+    const updatedtablevalues=tables.map((table) => {
         if (table.id === tableId) {
           const updatedRows = table.rows.map((row, index) => {
             if (index === rowIndex) {
@@ -64,7 +58,9 @@ const Calculatedarea=(length,breadth)=>{
         }
         return table;
       })
-    );
+    
+    setTables(updatedtablevalues) 
+      
   };
   
  
@@ -84,7 +80,7 @@ const Calculatedarea=(length,breadth)=>{
         <div key={table.id}>
           <button onClick={() => addRow(table.id)}>Add Row</button>
           <table>
-            <thead>
+           
               <tr>
                 <th>Length</th>
                 <th>Breadth</th>
@@ -92,11 +88,9 @@ const Calculatedarea=(length,breadth)=>{
                 <th>Divided by 12</th>
                 <th>Rate</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th>Delete</th>
               </tr>
-            </thead>
-            <tbody>
-              {table.rows.map((row, rowIndex) => (
+            {table.rows.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   <td>
                     <input
@@ -127,7 +121,6 @@ const Calculatedarea=(length,breadth)=>{
                   </td>
                 </tr>
               ))}
-            </tbody>
           </table>
         </div>
       ))}
