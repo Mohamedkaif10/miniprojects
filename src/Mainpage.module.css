@@ -12,7 +12,14 @@ td{
     border:1px solid black;
   }
 .TP{
-    position: inherit;
+    position: relative;
     border-style: dashed;
-    width:5cm
+    width:5cm;
+    left:25cm;
+    top:2cm
+}
+.addbtn{
+    position: relative;
+    left:10cm;
+    top:2rem;
 }

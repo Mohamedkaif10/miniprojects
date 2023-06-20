@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import classes from "./Mainpage.module.css"
-const Mainpage = () => {
+import Button from "./Assets/Button";
+const Mainpage = (props) => {
     const Intialvalues = () => ({
         id: Math.random().toString(),
         rows: [{ length: "", breadth: "", area: 0, dividedArea: 0, rate: "", price: 0 }]
@@ -78,7 +79,7 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
     <Fragment>
       {tables.map((table) => (
         <div key={table.id}>
-          <button onClick={() => addRow(table.id)}>Add Row</button>
+          <Button className={classes.addbtn} onClick={() => addRow(table.id)}>Add Row</Button>
           <table>
            
               <tr>
@@ -96,14 +97,14 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
                     <input
                       type="number"
                       value={row.length}
-                      onChange={(e) => updateCellValue(table.id, rowIndex, "length", e.target.value)}
+                      onChange={(event) => updateCellValue(table.id, rowIndex, "length", event.target.value)}
                     />
                   </td>
                   <td>
                     <input
                       type="number"
                       value={row.breadth}
-                      onChange={(e) => updateCellValue(table.id, rowIndex, "breadth", e.target.value)}
+                      onChange={(event) => updateCellValue(table.id, rowIndex, "breadth", event.target.value)}
                     />
                   </td>
                   <td>{row.area}</td>
@@ -112,7 +113,7 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
                     <input
                       type="number"
                       value={row.rate}
-                      onChange={(e) => updateCellValue(table.id, rowIndex, "rate", e.target.value)}
+                      onChange={(event) => updateCellValue(table.id, rowIndex, "rate", event.target.value)}
                     />
                   </td>
                   <td>{row.price}</td>
@@ -127,7 +128,7 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
 
       <div className={classes.TP}>
         <h3>Total Price: {totalPrice}</h3>
-        <button onClick={updateTotalPrice}>Calculate Total Price</button>
+        <Button className={classes.tpbtn} onClick={updateTotalPrice}>Calculate Total Price</Button>
       </div>
     </Fragment>
   );
