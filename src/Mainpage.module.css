@@ -15,7 +15,7 @@ table {
   
   .TP {
     position: relative;
-    border-style: dashed;
+    border-style: solid;
     width: 100%;
     max-width: 300px;
     margin: 2rem auto;
@@ -29,7 +29,7 @@ table {
   
   @media (min-width: 768px) {
     table {
-      width: 70%;
+      width: 30%;
       margin-left: auto;
       margin-right: auto;
     }
