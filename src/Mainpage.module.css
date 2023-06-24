@@ -4,8 +4,8 @@ table {
   }
   
   th, td {
-    border: 1px solid black;
-    padding: 8px;
+    border: 0.5px solid black;
+    padding: 1px;
   }
   
   th {
@@ -14,7 +14,6 @@ table {
   
   .TP {
     position: relative;
-    border-style: solid;
     width: 100%;
     max-width: 300px;
     margin: 2rem auto;
@@ -23,7 +22,7 @@ table {
   
   .addbtn {
     display: block;
-    margin: 2rem auto;
+    margin: 0.5rem auto;
   }
   
   @media (max-width: 200px) {

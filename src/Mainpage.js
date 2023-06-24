@@ -86,7 +86,7 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
                 <th>Length</th>
                 <th>Breadth</th>
                 <th>Area</th>
-                <th>Divided by 12</th>
+                <th>/12</th>
                 <th>Rate</th>
                 <th>Price</th>
                 <th>Delete</th>
