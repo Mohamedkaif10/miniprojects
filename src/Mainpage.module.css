@@ -1,5 +1,4 @@
 table {
-    width: 100%;
     margin-top: 50px;
     border-collapse: collapse;
   }
@@ -27,11 +26,12 @@ table {
     margin: 2rem auto;
   }
   
-  @media (min-width: 768px) {
+  @media (max-width: 200px) {
     table {
-      width: 10%;
-      margin-left: auto;
-      margin-right: auto;
+        position: absolute;
+      left: 10px;
+      top: 2rem;
+      margin: 0;
     }
   
     .addbtn {
