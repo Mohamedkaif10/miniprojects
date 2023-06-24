@@ -6,9 +6,11 @@ const Mainpage = () => {
         id: Math.random().toString(),
         rows: [{ length: "", breadth: "", area: 0, dividedArea: 0, rate: "", price: 0 }]
       });
-  const [tables, setTables] = useState([Intialvalues()]);
-  const [totalPrice, setTotalPrice] = useState(0);
-      const addRow = (tableId) => {
+  
+      const [tables, setTables] = useState([Intialvalues()]);
+     const [totalPrice, setTotalPrice] = useState(0);
+      
+       const addRow = (tableId) => {
             const updatedTables = tables.map((table) => {
              if (table.id === tableId) {
                 const newRow = {};
@@ -32,31 +34,34 @@ const Mainpage = () => {
                 setTables(updatedTablesdeleted) 
      
                };
-const updateCellValue = (tableId, rowIndex, colIndex, value) => {
-    const updatedtablevalues=tables.map((table) => {
-        if (table.id === tableId) {
-          const updatedRows = table.rows.map((row, index) => {
-            if (index === rowIndex) {
-              const updatedRow = {
-                ...row,[colIndex]: value
-              };
-              updatedRow.area = parseFloat(updatedRow.length) * parseFloat(updatedRow.breadth);
-              updatedRow.dividedArea = updatedRow.area / 12;
-              updatedRow.price = parseFloat(updatedRow.dividedArea) * parseFloat(updatedRow.rate);
-              return updatedRow;
-            }
-            return row;
-          });
-          return {
-            rows: updatedRows
-          };
-        }
-        return table;
-      })
+
+         const updateCellValue = (tableId, rowIndex, colIndex, value) => {
+              const updatedtablevalues=tables.map((table) => {
+                 if (table.id === tableId) {
+                   const updatedRows = table.rows.map((row, index) => {
+                      if (index === rowIndex)
+                       {
+                          const updatedRow = 
+                          {
+                             ...row,[colIndex]: value
+                          };
+                      updatedRow.area = parseFloat(updatedRow.length) * parseFloat(updatedRow.breadth);
+                      updatedRow.dividedArea = updatedRow.area / 12;
+                      updatedRow.price = parseFloat(updatedRow.dividedArea) * parseFloat(updatedRow.rate);
+                      return updatedRow;
+                        }
+                    return row;
+                      });
+                  return {
+                    rows: updatedRows
+                         };
+                      }
+                    return table;
+                    })
     
-    setTables(updatedtablevalues) 
+                 setTables(updatedtablevalues) 
       
-  };
+                  };
   
  
   const updateTotalPrice = () => {
