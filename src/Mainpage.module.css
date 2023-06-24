@@ -23,16 +23,10 @@ table {
   .addbtn {
     display: block;
     margin: 0.5rem auto;
+    
   }
   
   @media (max-width: 200px) {
-    table {
-        position: absolute;
-      left: 10px;
-      top: 2rem;
-      margin: 0;
-    }
-  
     .addbtn {
       position: absolute;
       left: 10px;

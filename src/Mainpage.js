@@ -12,8 +12,7 @@ const Mainpage = (props) => {
             const updatedTables = tables.map((table) => {
              if (table.id === tableId) {
             const newRow = {};
-               return {
-                   ...table,
+                return {
                    rows: [...table.rows, newRow]
                       };
                 }
@@ -27,7 +26,6 @@ const Mainpage = (props) => {
     const updatedTablesdeleted=tables.map((table) => {
         if (table.id === tableId) {
           return {
-            ...table,
             rows: table.rows.filter((_, index) => index !== rowIndex)
           };
         }
@@ -42,8 +40,7 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
           const updatedRows = table.rows.map((row, index) => {
             if (index === rowIndex) {
               const updatedRow = {
-                ...row,
-                [colIndex]: value
+                ...row,[colIndex]: value
               };
               updatedRow.area = parseFloat(updatedRow.length) * parseFloat(updatedRow.breadth);
               updatedRow.dividedArea = updatedRow.area / 12;
@@ -53,7 +50,6 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
             return row;
           });
           return {
-            ...table,
             rows: updatedRows
           };
         }
@@ -81,7 +77,6 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
         <div key={table.id}>
           <Button className={classes.addbtn} onClick={() => addRow(table.id)}>Add Row</Button>
           <table>
-           
               <tr>
                 <th>Length</th>
                 <th>Breadth</th>
@@ -128,7 +123,7 @@ const updateCellValue = (tableId, rowIndex, colIndex, value) => {
 
       <div className={classes.TP}>
         <h3>Total Price: {totalPrice}</h3>
-        <Button className={classes.tpbtn} onClick={updateTotalPrice}>Calculate Total Price</Button>
+        <Button className={classes.TotalPriceButton} onClick={updateTotalPrice}>Calculate Total Price</Button>
       </div>
     </Fragment>
   );
