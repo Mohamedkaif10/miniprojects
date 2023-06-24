@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import classes from "./Mainpage.module.css"
 import Button from "./Assets/Button";
-const Mainpage = (props) => {
+const Mainpage = () => {
     const Intialvalues = () => ({
         id: Math.random().toString(),
         rows: [{ length: "", breadth: "", area: 0, dividedArea: 0, rate: "", price: 0 }]
@@ -11,29 +11,27 @@ const Mainpage = (props) => {
       const addRow = (tableId) => {
             const updatedTables = tables.map((table) => {
              if (table.id === tableId) {
-            const newRow = {};
-                return {
-                   rows: [...table.rows, newRow]
-                      };
-                }
+                const newRow = {};
+                return {rows:[...table.rows, newRow]}
+                    }
                return table;
               });
   
                setTables(updatedTables);
              };
   
-  const deleteRow = (tableId, rowIndex) => {
-    const updatedTablesdeleted=tables.map((table) => {
-        if (table.id === tableId) {
-          return {
-            rows: table.rows.filter((_, index) => index !== rowIndex)
-          };
-        }
-        return table;
-      })
-    setTables(updatedTablesdeleted) 
+       const deleteRow = (tableId, rowIndex) => {
+             const updatedTablesdeleted=tables.map((table) => {
+               if (table.id === tableId) {
+                return {
+                     rows: table.rows.filter((_, index) => index !== rowIndex)
+                       };
+                   }
+                return table;
+                 })
+                setTables(updatedTablesdeleted) 
      
-  };
+               };
 const updateCellValue = (tableId, rowIndex, colIndex, value) => {
     const updatedtablevalues=tables.map((table) => {
         if (table.id === tableId) {
