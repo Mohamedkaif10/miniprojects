@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import classes from "./Mainpage.module.css"
 import Button from "./Assets/Button";
 const Mainpage = () => {
@@ -13,7 +13,7 @@ const Mainpage = () => {
        const addRow = (tableId) => {
             const updatedTables = tables.map((table) => {
              if (table.id === tableId) {
-                const newRow = {};
+                const newRow = {length: "", breadth: "", area: 0, dividedArea: 0, rate: "", price: 0};
                 return {rows:[...table.rows, newRow]}
                     }
                return table;
@@ -41,10 +41,8 @@ const Mainpage = () => {
                    const updatedRows = table.rows.map((row, index) => {
                       if (index === rowIndex)
                        {
-                          const updatedRow = 
-                          {
-                             ...row,[colIndex]: value
-                          };
+                          const updatedRow ={...row,[colIndex]: value}
+                          
                       updatedRow.area = parseFloat(updatedRow.length) * parseFloat(updatedRow.breadth);
                       updatedRow.dividedArea = updatedRow.area / 12;
                       updatedRow.price = parseFloat(updatedRow.dividedArea) * parseFloat(updatedRow.rate);
@@ -73,6 +71,7 @@ const Mainpage = () => {
     });
     setTotalPrice(totalPrice);
   };
+useEffect(updateTotalPrice,[tables])
 
   return (
     <Fragment>
@@ -126,7 +125,6 @@ const Mainpage = () => {
 
       <div className={classes.TP}>
         <h3>Total Price: {totalPrice}</h3>
-        <Button className={classes.TotalPriceButton} onClick={updateTotalPrice}>Calculate Total Price</Button>
       </div>
     </Fragment>
   );
